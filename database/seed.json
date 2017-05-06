@@ -1,0 +1,16 @@
+{
+  "items": {
+    "item0": {
+      "movieTitle": "The Fault In Our Stars",
+      "yearReleased": "2014",
+      "actors": ["Shailene Woodley", "Ansel Elgort", "Nat Wolff", "Laura Dern", "Sam Trammell", "Willem Dafoe", "Lotte Verbeek"],
+      "ratings": [1, 2, 3, 4, 5]
+      }
+    },
+    "users": {
+      "user0": {
+        "uid": "",
+        "username": "PamPickles"
+    }
+  }
+}
