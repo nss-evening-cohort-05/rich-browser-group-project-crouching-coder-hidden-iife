@@ -5,8 +5,12 @@ var movieAPI = ((showResults) => {
 			let movieString = "";
 			console.log(movies);
 			for (let j=0; j< movies.length; j++){
-
+				movieString += `<div class="col-md-6"><section>`;
+				movieString += `<h2>${movies[j].movieTitle}</h2>`;
+				movieString += `<h3>${movies[j].yearReleased}</h3>`;
+				movieString += `<p>Actors: ${movies[j].actors}</p>`;
 			}
+			$("#movieList").html(movieString);
 		}).catch((error) => {
 			console.log("write Profile Dom error", error);
 		});
