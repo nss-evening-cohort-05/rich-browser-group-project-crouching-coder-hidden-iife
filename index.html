@@ -29,7 +29,6 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a id="new-movies" class="hidden" href="#">Find New Movies</a></li>
           <li><a id="search-movies" class="hidden" href="#">Search Your Movies</a></li>
-          <li><a id="login" href="#">Login/Register</a></li>
           <li><a id="logout" class="hidden" href="#">Logout</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -38,6 +37,11 @@
 
   <div id="login-container">
     <h3>Login Container</h3>
+    <input type="email" placeholder="ENTER YOUR EMAIL" id="userEmail" name="">
+    <input type="password" placeholder="ENTER PASSWORD" id="userPassword" name="">
+    <input type="text" name="" placeholder="ENTER USERNAME" id="userName">
+    <input type="submit" name="" value="LOGIN" id="userLoginBtn">
+    <input type="submit" name="" value="REGISTER" id="userRegisterBtn">
   </div>
 
   <div id="user-profile-container" class="hidden">
@@ -73,7 +77,9 @@
   <script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
   <!-- Personal Scripts -->
+  <script type="text/javascript" src="./javascripts/firebase.js"></script>
   <script type="text/javascript" src="./javascripts/firebaseAuth.js"></script>
+  <script type="text/javascript" src="./javascripts/userCrud.js"></script>
   <script type="text/javascript" src="./javascripts/movieApi.js"></script>
   <script type="text/javascript" src="./javascripts/main.js"></script>
 </body>

@@ -1,6 +1,6 @@
-var FbApi =  (() => {
+var movieAPI = (() => {
 	let movieList = [];
-
+	
 	return {
 		firebaseCredentials : () => {
 			return new Promise((resolve, reject) => {
