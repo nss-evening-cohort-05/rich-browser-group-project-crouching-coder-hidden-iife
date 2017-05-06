@@ -9,6 +9,12 @@ var movieAPI = ((showResults) => {
 				movieString += `<h2>${movies[j].movieTitle}</h2>`;
 				movieString += `<h3>${movies[j].yearReleased}</h3>`;
 				movieString += `<p>Actors: ${movies[j].actors}</p>`;
+				movieString += `<div>`;
+				for (let i=0; i<movies[j].ratings; i++) {
+					movieString +=`&#9733;`;
+				}
+				movieString += `</div>`;
+				movieString += `</section></div>`;
 			}
 			$("#movieList").html(movieString);
 		}).catch((error) => {
