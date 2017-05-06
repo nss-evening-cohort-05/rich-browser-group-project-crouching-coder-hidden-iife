@@ -12,6 +12,7 @@ $(document).ready(function() {
   $('#getMovie').click((event) => {
     let movieTitle = $('#movieSearch').val();
     movieAPI.getMovie(movieTitle).then((results) =>{
+      // movieAPI.writeDom(results);
       console.log("Movie API results:", results);
     }).catch((error) => {
       console.log("getMovie Error", error);
@@ -50,14 +51,54 @@ $(document).ready(function() {
 		let email = $("#userEmail").val();
 		let password = $("#userPassword").val();
 
+    $("#logout").removeClass("hidden");
+    $("#new-movies").removeClass("hidden");
+    $("#search-your-movies").removeClass("hidden");
+
 		let user = {email, password};
 		movieAPI.loginUser(user).then((response) => {
 			$("#login-container").addClass("hidden");
 			$("#user-profile-container").removeClass("hidden");
+
+      // movieAPI.writeProfileDom(apiKeys, id);
 		}).catch((error) => {
 			console.log("login error: ", error);
 		});
 	});
+
+  $("#new-movies").click(() => {
+    $("#search-new-container").removeClass("hidden");
+    $("#user-profile-container").addClass("hidden");
+    $("#search-yours-container").addClass("hidden");
+
+  });
+
+  $("#search-your-movies").click(() => {
+    $("#user-profile-container").addClass("hidden");
+    $("#search-yours-container").removeClass("hidden");
+    $("#search-new-container").addClass("hidden");
+
+  });
+
+  $("#get-my-movie").click((e) => {
+    let myMovie = $("#my-movie-search").val();
+    let id = e.target.id;
+
+
+    // movieAPI.writeProfileDom(apiKeys, id, myMovie);
+  });
+
+  $("#watched-btn").click((e) => {
+    let id = e.target.id;
+
+    // movieAPI.writeProfileDom(apiKeys, id)
+  });
+
+  $("#unwatched-btn").click((e) => {
+    let id = e.target.id;
+
+    // movieAPI.writeProfileDom(apiKeys, id)
+  });
 
 
 
