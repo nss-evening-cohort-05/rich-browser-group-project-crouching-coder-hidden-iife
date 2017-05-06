@@ -12,7 +12,8 @@ $(document).ready(function() {
   $('#getMovie').click((event) => {
     let movieTitle = $('#movieSearch').val();
     movieAPI.getMovie(movieTitle).then((results) =>{
-      // movieAPI.writeDom(results);
+      movieAPI.writeDom(results);
+      clearInput();
       console.log("Movie API results:", results);
     }).catch((error) => {
       console.log("getMovie Error", error);
@@ -80,9 +81,16 @@ $(document).ready(function() {
 
   });
 
+  const clearInput = () => {
+    $("#my-movie-search").val("");
+    $("#movieSearch").val("");
+  };
+
   $("#get-my-movie").click((e) => {
     let myMovie = $("#my-movie-search").val();
     let id = e.target.id;
+    clearInput();
+
 
 
     // movieAPI.writeProfileDom(apiKeys, id, myMovie);
@@ -90,6 +98,7 @@ $(document).ready(function() {
 
   $("#watched-btn").click((e) => {
     let id = e.target.id;
+
 
     // movieAPI.writeProfileDom(apiKeys, id)
   });
