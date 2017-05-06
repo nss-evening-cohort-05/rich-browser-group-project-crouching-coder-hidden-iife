@@ -1,4 +1,4 @@
-var FbApi =  (() => {
+var movieAPI =  (() => {
 	let movieList = [];
 
 	return {
