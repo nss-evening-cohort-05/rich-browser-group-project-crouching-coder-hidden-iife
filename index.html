@@ -28,7 +28,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li><a id="new-movies" class="hidden" href="#">Find New Movies</a></li>
-          <li><a id="search-movies" class="hidden" href="#">Search Your Movies</a></li>
+          <li><a id="search-your-movies" class="hidden" href="#">Search Your Movies</a></li>
           <li><a id="logout" class="hidden" href="#">Logout</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -46,12 +46,20 @@
 
   <div id="user-profile-container" class="hidden">
     <h3>user profile</h3>
+    <button id="watched-btn" class="btn">Watched</button>
+    <button id="unwatched-btn" class="btn">Unwatched</button>
     <div id="watched"></div>
-    <div id="unwatched" class="hidden" ></div>
+    <div id="unwatched" class="hidden"></div>
   </div>
 
   <div id="search-yours-container" class="hidden">
     <h3>Search new</h3>
+    <div class="row input-holder">
+      <input type="text" class="col-xs-4 col-xs-offset-4" id="my-movie-search">
+    </div>
+    <div class="row col-xs-4 col-xs-offset-4">
+      <button class="btn btn-danger btn-lg col-xs-12" id="get-my-movie">Get My Movie!</button>
+    </div>
   </div>
 
 
