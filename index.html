@@ -11,19 +11,67 @@
 </head>
 
 <body>
-  <div class="row input-holder">
-    <input type="text" class="col-xs-4 col-xs-offset-4" id="movieSearch">
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" id="brand" href="#">Movie Mayhem</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a id="new-movies" class="hidden" href="#">Find New Movies</a></li>
+          <li><a id="search-movies" class="hidden" href="#">Search Your Movies</a></li>
+          <li><a id="login" href="#">Login/Register</a></li>
+          <li><a id="logout" class="hidden" href="#">Logout</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div id="login-container">
+    <h3>Login Container</h3>
   </div>
-  <div class="row col-xs-4 col-xs-offset-4">
-    <button class="btn btn-danger btn-lg col-xs-12" id="getMovie">Get Movie</button>
+
+  <div id="user-profile-container" class="hidden">
+    <h3>user profile</h3>
+    <div id="watched"></div>
+    <div id="unwatched" class="hidden" ></div>
   </div>
+
+  <div id="search-yours-container" class="hidden">
+    <h3>Search new</h3>
+  </div>
+
+
+
+
+  <div id="search-new-container" class="hidden">
+    <div class="row input-holder">
+      <input type="text" class="col-xs-4 col-xs-offset-4" id="movieSearch">
+    </div>
+    <div class="row col-xs-4 col-xs-offset-4">
+      <button class="btn btn-danger btn-lg col-xs-12" id="getMovie">Get Movie</button>
+    </div>
+  </div>
+
+
+
+
 
 
   <!-- Third Party Scripts -->
   <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
   <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  
+
   <!-- Personal Scripts -->
   <script type="text/javascript" src="./javascripts/firebaseAuth.js"></script>
   <script type="text/javascript" src="./javascripts/movieApi.js"></script>
