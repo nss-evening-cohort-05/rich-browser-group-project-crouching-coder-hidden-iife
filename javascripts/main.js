@@ -59,11 +59,4 @@ $(document).ready(function() {
 		});
 	});
 
-
-  movieAPI.firebaseCredentials().then((firebaseKeys) => {
-  	apiKeys = firebaseKeys;
-  	firebase.initializeApp(apiKeys);
-  }).catch((error) => {
-  	console.log("initialize error", error);
-  });
 });
