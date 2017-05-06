@@ -60,12 +60,13 @@ $(document).ready(function() {
 		movieAPI.loginUser(user).then((response) => {
 			$("#login-container").addClass("hidden");
 			$("#user-profile-container").removeClass("hidden");
-
-      // movieAPI.writeProfileDom(apiKeys, id);
+			let id = "login";
+     	movieAPI.writeProfileDom(apiKeys, id);
 		}).catch((error) => {
 			console.log("login error: ", error);
 		});
 	});
+
 
   $("#new-movies").click(() => {
     $("#search-new-container").removeClass("hidden");
@@ -108,7 +109,5 @@ $(document).ready(function() {
 
     // movieAPI.writeProfileDom(apiKeys, id)
   });
-
-
 
 });

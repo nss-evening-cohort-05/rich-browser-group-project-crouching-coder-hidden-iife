@@ -1,4 +1,20 @@
 var movieAPI = ((showResults) => {
+	showResults.writeProfileDom = (keys, buttonId, movieName) => {
+		movieAPI.getUserMovieList(keys).then((results) => {
+			let movies = results;
+			let movieString = "";
+			console.log(movies);
+			for (let j=0; j< movies.length; j++){
+				movieString += `<div class="col-md-6"><section>`;
+				movieString += `<h2>${movies[j].movieTitle}</h2>`;
+				movieString += `<h3>${movies[j].yearReleased}</h3>`;
+				movieString += `<p>Actors: ${movies[j].actors}</p>`;
+			}
+			$("#movieList").html(movieString);
+		}).catch((error) => {
+			console.log("write Profile Dom error", error);
+		});
+	};
 
 	showResults.writeDom = (results) =>{
 		let searchResults = results;
@@ -9,9 +25,9 @@ var movieAPI = ((showResults) => {
 		resultString += `<h3>${searchResults.Year}</h3>`;
 		resultString += `<p>Actors: ${searchResults.Actors}</p>`;
 		resultString += `<button class"btn btn-danger col-xs-12" id="addToMyMovies">Add To My Movies</button><br>`;
-		resultString += `<label for="seen">Watched</label>`
+		resultString += `<label for="seen">Watched</label>`;
 		resultString += `<input class"checkboxStyle" type="checkbox" id="seen">`;
-		resultString += `<label for="unseen">Must Watch</label>`
+		resultString += `<label for="unseen">Must Watch</label>`;
 		resultString += `<input class"checkboxStyle" type="checkbox" id="unseen">`;
 		resultString += `<p>Ratings: <br>${searchResults.Ratings[0].Source} ${searchResults.Ratings[0].Value}<br>`;
 		resultString += `${searchResults.Ratings[1].Source} ${searchResults.Ratings[1].Value}<br>`;
@@ -24,12 +40,8 @@ var movieAPI = ((showResults) => {
 		resultString += `</section></div>`;
 
 		$('#new-search-results').html(resultString);
-	}
+	};
 
-
-
-
-
-
-		return showResults;
+	return showResults;
 })(movieAPI || {});
+
