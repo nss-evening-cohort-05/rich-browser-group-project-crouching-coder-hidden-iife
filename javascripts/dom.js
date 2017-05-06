@@ -11,4 +11,6 @@ var movieAPI = ((showResults) => {
 			console.log("write Profile Dom error", error);
 		});
 	};
-});
+	return showResults;
+
+	})(movieAPI || {});
