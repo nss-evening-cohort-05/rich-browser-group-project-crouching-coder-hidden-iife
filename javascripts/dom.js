@@ -1,9 +1,20 @@
 var movieAPI = ((showResults) => {
 	showResults.writeProfileDom = (keys, buttonId, movieName) => {
 		movieAPI.getUserMovieList(keys).then((results) => {
-			let movies = results;
+			let movies = [];
+			for (var x=0; x<results.length; x++){
+				if (buttonId==="watched" && results[x].isSeen===true){
+						movies.push(results[x]);
+				}
+				if (buttonId==="unwatched" && results[x].isSeen===false){
+						movies.push(results[x]);
+				}
+			}
+			if (buttonId==="login" || buttonId==="save" || buttonId==="delete") {
+				movies = results;
+			}
+
 			let movieString = "";
-			console.log(keys);
 			for (let j=0; j< movies.length; j++){
 				movieString += `<div class="col-md-6"><section>`;
 				movieString += `<h2>${movies[j].movieTitle}</h2>`;
@@ -23,7 +34,7 @@ var movieAPI = ((showResults) => {
 		});
 	};
 
-	showResults.writeDom = (results) =>{
+	showResults.writeDom = (results, id) =>{
 		let searchResults = results;
 		let resultString = "";
 
@@ -31,7 +42,11 @@ var movieAPI = ((showResults) => {
 		resultString += `<h2>${searchResults.Title}</h2>`;
 		resultString += `<h3>${searchResults.Year}</h3>`;
 		resultString += `<p>Actors: ${searchResults.Actors}</p>`;
-		resultString += `<button class"btn btn-danger col-xs-12" id="addToMyMovies">Add To My Movies</button><br>`;
+		if (id === "search"){
+			resultString += `<button class"btn btn-danger col-xs-12" id="addToMyMovies">Add To My Movies</button><br>`;
+		} else if (id === "edit") {
+			resultString += `<button class"btn btn-danger col-xs-12" id="addToMyMovies">Edit My Movie</button><br>`;
+		}
 		resultString += `<div id="watchedStatus" class="hidden"><label for="seen">Watched</label>`;
 		resultString += `<input class"checkboxStyle" type="checkbox" id="seen">`;
 		resultString += `<label for="unseen">Must Watch</label>`;
@@ -39,11 +54,11 @@ var movieAPI = ((showResults) => {
 		resultString += `<p>Ratings: <br>${searchResults.Ratings[0].Source} ${searchResults.Ratings[0].Value}<br>`;
 		resultString += `${searchResults.Ratings[1].Source} ${searchResults.Ratings[1].Value}<br>`;
 		resultString += `${searchResults.Ratings[2].Source} ${searchResults.Ratings[2].Value}</p>`;
-		resultString += `<div id="myRating" class="hidden"><input class="radioButton" type="radio" id="rating1" value="1">1`;
-		resultString += `<input class="radioButton" type="radio" id="rating2" value="2">2`;
-		resultString += `<input class="radioButton" type="radio" id="rating3" value="3">3`;
-		resultString += `<input class="radioButton" type="radio" id="rating4" value="4">4`;
-		resultString += `<input class="radioButton" type="radio" id="rating5" value="5">5</div>`;
+		resultString += `<div id="myRating" class="hidden"><input class="radioButton" type="radio" name="rating" id="rating1" value="1">1`;
+		resultString += `<input class="radioButton" type="radio" name="rating" id="rating2" value="2">2`;
+		resultString += `<input class="radioButton" type="radio" name="rating" id="rating3" value="3">3`;
+		resultString += `<input class="radioButton" type="radio" name="rating" id="rating4" value="4">4`;
+		resultString += `<input class="radioButton" type="radio" name="rating" id="rating5" value="5">5</div>`;
 		resultString += `</section><button id="saveMovie" class="hidden">SAVE</button></div>`;
 
 		$('#new-search-results').html(resultString);

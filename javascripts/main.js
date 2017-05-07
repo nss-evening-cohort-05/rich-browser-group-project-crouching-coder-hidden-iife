@@ -15,7 +15,7 @@ $(document).ready(function() {
 //**********************************************************
 	//CRUD FUNCTIONALITY
 	//ADD MOVIE
-	let addMovieClick = (results) => {
+	let addMovieClick = (results, id) => {
 		let newMovie = {
 			movieTitle: results.Title,
 			yearReleased: results.Year,
@@ -46,19 +46,43 @@ $(document).ready(function() {
 				 	} else {
 				 		newMovie.ratings = 0;
 				 	}
-				 }				
+				 }
+				 console.log(id);
+				if (id==="search"){				
 				movieAPI.addMovie(apiKeys, newMovie).then(() => {
 		        $('#search-new-container').addClass('hidden');
 		        $('#user-profile-container').removeClass('hidden');
-		        console.log("working add movie?");
-		        movieAPI.writeProfileDom(apiKeys);
+		        console.log("working add movie?", newMovie);
+		        let id = "save";
+		        movieAPI.writeProfileDom(apiKeys, id);
 				}).catch((error) => {
 					console.log(error);
 				});
-				
+				} else if (id==="edit"){
+					movieAPI.editMovie(apiKeys, newMovie, editId).then(() => {
+						$('#search-new-container').addClass('hidden');
+				        $('#user-profile-container').removeClass('hidden');
+				        let id = "save";
+				        movieAPI.writeProfileDom(apiKeys, id);
+					}).catch((error) => {
+						console.log(error);
+					});
+				}
 				});
 			});
 	};
+
+	//WATCHED VS UNWATCHED VIEW
+
+	$("#watched-btn").click(() => {
+		let buttonID = "watched";
+		movieAPI.writeProfileDom(apiKeys, buttonID);
+	});
+
+	$("#unwatched-btn").click(() => {
+		let buttonID = "unwatched";
+		movieAPI.writeProfileDom(apiKeys, buttonID);
+	});
 
 	//DELETE MOVIE
 	$("#movieList").on("click", ".delete", (e) => {
@@ -67,7 +91,8 @@ $(document).ready(function() {
 
 		//prevents error of no items in keys - possibly cashing issue?
 		if (apiKeys !== undefined){
-			movieAPI.writeProfileDom(apiKeys);
+			let id = "delete";
+			movieAPI.writeProfileDom(apiKeys, id);
 		} else {
 			$("#movieList").html("You have no movies! Go find and add some");
 		}	
@@ -79,8 +104,19 @@ $(document).ready(function() {
 	//EDIT MOVIE
 	$("#movieList").on("click", ".edit", (e) => {
 		editId = e.target.id;
-		console.log("edit click working");
-
+		let movieName = e.target.parentNode.firstChild.textContent;
+		console.log("edit click working", editId);
+		$("#search-new-container").removeClass("hidden");
+	    $("#user-profile-container").addClass("hidden");
+	    $("#search-yours-container").addClass("hidden");
+	    $('#movieSearch').val(editId);
+	    movieAPI.getMovie(movieName).then((results) => {
+	    	let id = "edit";
+	    	movieAPI.writeDom(results, id);
+	    	addMovieClick(results, id);
+	    }).catch((error) => {
+	    	console.log("edit movie error", error);
+	    });
 	});
 
 //**********************************************************
@@ -88,8 +124,9 @@ $(document).ready(function() {
   $('#getMovie').click((event) => {
     let movieTitle = $('#movieSearch').val();
     movieAPI.getMovie(movieTitle).then((results) =>{
-      movieAPI.writeDom(results);
-      addMovieClick(results);
+      let id = "search";
+      movieAPI.writeDom(results, id);
+      addMovieClick(results, id);
       clearInput();
       console.log("Movie API results:", results);
     }).catch((error) => {
