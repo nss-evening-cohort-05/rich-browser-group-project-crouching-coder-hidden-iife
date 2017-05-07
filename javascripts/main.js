@@ -47,7 +47,8 @@ $(document).ready(function() {
 				 		newMovie.ratings = 0;
 				 	}
 				 }
-				if (id==="save"){				
+				 console.log(id);
+				if (id==="search"){				
 				movieAPI.addMovie(apiKeys, newMovie).then(() => {
 		        $('#search-new-container').addClass('hidden');
 		        $('#user-profile-container').removeClass('hidden');

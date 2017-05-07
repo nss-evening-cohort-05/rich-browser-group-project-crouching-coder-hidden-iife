@@ -54,11 +54,11 @@ var movieAPI = ((showResults) => {
 		resultString += `<p>Ratings: <br>${searchResults.Ratings[0].Source} ${searchResults.Ratings[0].Value}<br>`;
 		resultString += `${searchResults.Ratings[1].Source} ${searchResults.Ratings[1].Value}<br>`;
 		resultString += `${searchResults.Ratings[2].Source} ${searchResults.Ratings[2].Value}</p>`;
-		resultString += `<div id="myRating" class="hidden"><input class="radioButton" type="radio" id="rating1" value="1">1`;
-		resultString += `<input class="radioButton" type="radio" id="rating2" value="2">2`;
-		resultString += `<input class="radioButton" type="radio" id="rating3" value="3">3`;
-		resultString += `<input class="radioButton" type="radio" id="rating4" value="4">4`;
-		resultString += `<input class="radioButton" type="radio" id="rating5" value="5">5</div>`;
+		resultString += `<div id="myRating" class="hidden"><input class="radioButton" type="radio" name="rating" id="rating1" value="1">1`;
+		resultString += `<input class="radioButton" type="radio" name="rating" id="rating2" value="2">2`;
+		resultString += `<input class="radioButton" type="radio" name="rating" id="rating3" value="3">3`;
+		resultString += `<input class="radioButton" type="radio" name="rating" id="rating4" value="4">4`;
+		resultString += `<input class="radioButton" type="radio" name="rating" id="rating5" value="5">5</div>`;
 		resultString += `</section><button id="saveMovie" class="hidden">SAVE</button></div>`;
 
 		$('#new-search-results').html(resultString);
