@@ -1,18 +1,95 @@
 $(document).ready(function() {
 	let apiKeys;
+	let editId = "";
 
+
+//**********************************************************
 	//FIREBASE INITIALIZING
-	movieAPI.firebaseCredentials().then((firebaseKeys) => {
-		apiKeys = firebaseKeys;
+	movieAPI.firebaseCredentials().then((myKeys) => {
+		apiKeys = myKeys;
 		firebase.initializeApp(apiKeys);
 	}).catch((error) => {
 		console.log("key errors", error);
 	});
 
+//**********************************************************
+	//CRUD FUNCTIONALITY
+	//ADD MOVIE
+	let addMovieClick = (results) => {
+		let newMovie = {
+			movieTitle: results.Title,
+			yearReleased: results.Year,
+			actors: results.Actors,
+			isSeen: false,
+			ratings: 0
+		};
+		$("#addToMyMovies").on("click", () => {
+			$("#watchedStatus").removeClass("hidden");
+			$("#addToMyMovies").toggleClass("hidden");
+
+			$(":checkbox").on("click", (e) => {
+				if (e.target.id === "seen") {
+					$("#myRating").removeClass("hidden");
+					newMovie.isSeen = true;
+					$("#saveMovie").removeClass("hidden");
+				} else {
+					newMovie.isSeen = false;
+					$("#saveMovie").removeClass("hidden");
+				}
+			});
+			$("#saveMovie").on("click", (e) => {
+				console.log("save movie click", apiKeys);
+				let radioRatings = $("input:radio");
+				 for (let i =0; i < radioRatings.length; i++){
+				 	if (radioRatings[i].checked === true) {
+				 		newMovie.ratings = radioRatings[i].value;
+				 	} else {
+				 		newMovie.ratings = 0;
+				 	}
+				 }				
+				movieAPI.addMovie(apiKeys, newMovie).then(() => {
+		        $('#search-new-container').addClass('hidden');
+		        $('#user-profile-container').removeClass('hidden');
+		        console.log("working add movie?");
+		        movieAPI.writeProfileDom(apiKeys);
+				}).catch((error) => {
+					console.log(error);
+				});
+				
+				});
+			});
+	};
+
+	//DELETE MOVIE
+	$("#movieList").on("click", ".delete", (e) => {
+		let targetId = e.target.id;
+		movieAPI.deleteMovie(apiKeys, targetId).then(() => {
+
+		//prevents error of no items in keys - possibly cashing issue?
+		if (apiKeys !== undefined){
+			movieAPI.writeProfileDom(apiKeys);
+		} else {
+			$("#movieList").html("You have no movies! Go find and add some");
+		}	
+		}).catch((deleteError) => {
+			console.log("deleteTodo error: ", deleteError);
+		});
+	});
+
+	//EDIT MOVIE
+	$("#movieList").on("click", ".edit", (e) => {
+		editId = e.target.id;
+		console.log("edit click working");
+
+	});
+
+//**********************************************************
+	//BROAD MOVIE SEARCH
   $('#getMovie').click((event) => {
     let movieTitle = $('#movieSearch').val();
     movieAPI.getMovie(movieTitle).then((results) =>{
       movieAPI.writeDom(results);
+      addMovieClick(results);
       clearInput();
       console.log("Movie API results:", results);
     }).catch((error) => {
@@ -20,6 +97,7 @@ $(document).ready(function() {
     });
   });
 
+//**********************************************************
   //LOGIN FUNCTIONALITY
   $("#userRegisterBtn").click(() => {
 		let email = $("#userEmail").val();
@@ -82,6 +160,8 @@ $(document).ready(function() {
 
   });
 
+//**********************************************************
+	//EVENT LISTENERS
   const clearInput = () => {
     $("#my-movie-search").val("");
     $("#movieSearch").val("");
@@ -111,3 +191,7 @@ $(document).ready(function() {
   });
 
 });
+
+
+
+
