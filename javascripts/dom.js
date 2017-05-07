@@ -34,7 +34,7 @@ var movieAPI = ((showResults) => {
 		});
 	};
 
-	showResults.writeDom = (results) =>{
+	showResults.writeDom = (results, id) =>{
 		let searchResults = results;
 		let resultString = "";
 
@@ -42,7 +42,11 @@ var movieAPI = ((showResults) => {
 		resultString += `<h2>${searchResults.Title}</h2>`;
 		resultString += `<h3>${searchResults.Year}</h3>`;
 		resultString += `<p>Actors: ${searchResults.Actors}</p>`;
-		resultString += `<button class"btn btn-danger col-xs-12" id="addToMyMovies">Add To My Movies</button><br>`;
+		if (id === "search"){
+			resultString += `<button class"btn btn-danger col-xs-12" id="addToMyMovies">Add To My Movies</button><br>`;
+		} else if (id === "edit") {
+			resultString += `<button class"btn btn-danger col-xs-12" id="addToMyMovies">Edit My Movie</button><br>`;
+		}
 		resultString += `<div id="watchedStatus" class="hidden"><label for="seen">Watched</label>`;
 		resultString += `<input class"checkboxStyle" type="checkbox" id="seen">`;
 		resultString += `<label for="unseen">Must Watch</label>`;
