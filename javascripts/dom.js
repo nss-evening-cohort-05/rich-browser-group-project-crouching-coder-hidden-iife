@@ -1,9 +1,20 @@
 var movieAPI = ((showResults) => {
 	showResults.writeProfileDom = (keys, buttonId, movieName) => {
 		movieAPI.getUserMovieList(keys).then((results) => {
-			let movies = results;
+			let movies = [];
+			for (var x=0; x<results.length; x++){
+				if (buttonId==="watched" && results[x].isSeen===true){
+						movies.push(results[x]);
+				}
+				if (buttonId==="unwatched" && results[x].isSeen===false){
+						movies.push(results[x]);
+				}
+			}
+			if (buttonId==="login" || buttonId==="save" || buttonId==="delete") {
+				movies = results;
+			}
+
 			let movieString = "";
-			console.log(keys);
 			for (let j=0; j< movies.length; j++){
 				movieString += `<div class="col-md-6"><section>`;
 				movieString += `<h2>${movies[j].movieTitle}</h2>`;

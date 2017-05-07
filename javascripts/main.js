@@ -50,8 +50,9 @@ $(document).ready(function() {
 				movieAPI.addMovie(apiKeys, newMovie).then(() => {
 		        $('#search-new-container').addClass('hidden');
 		        $('#user-profile-container').removeClass('hidden');
-		        console.log("working add movie?");
-		        movieAPI.writeProfileDom(apiKeys);
+		        console.log("working add movie?", newMovie);
+		        let id = "save";
+		        movieAPI.writeProfileDom(apiKeys, id);
 				}).catch((error) => {
 					console.log(error);
 				});
@@ -60,6 +61,18 @@ $(document).ready(function() {
 			});
 	};
 
+	//WATCHED VS UNWATCHED VIEW
+
+	$("#watched-btn").click(() => {
+		let buttonID = "watched";
+		movieAPI.writeProfileDom(apiKeys, buttonID);
+	});
+
+	$("#unwatched-btn").click(() => {
+		let buttonID = "unwatched";
+		movieAPI.writeProfileDom(apiKeys, buttonID);
+	});
+
 	//DELETE MOVIE
 	$("#movieList").on("click", ".delete", (e) => {
 		let targetId = e.target.id;
@@ -67,7 +80,8 @@ $(document).ready(function() {
 
 		//prevents error of no items in keys - possibly cashing issue?
 		if (apiKeys !== undefined){
-			movieAPI.writeProfileDom(apiKeys);
+			let id = "delete";
+			movieAPI.writeProfileDom(apiKeys, id);
 		} else {
 			$("#movieList").html("You have no movies! Go find and add some");
 		}	
