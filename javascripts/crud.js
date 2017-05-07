@@ -18,7 +18,7 @@ var movieAPI = ((oldCrap) => {
 			});
 		});
 	};
-	oldCrap.addMovie = (apiKeys, newTodo) => {
+	oldCrap.addMovie = (apiKeys, newMovie) => {
 		newMovie.uid = movieAPI.credentialsCurrentUser().uid;
 		return new Promise ((resolve, reject) => {
 			$.ajax({
@@ -49,18 +49,17 @@ var movieAPI = ((oldCrap) => {
 		});
 	};
 	
-	oldCrap.editMovie = (apiKeys, editMovie, id) => {
+	oldCrap.editMovie = (apiKeys, editMovie, editId) => {
 		editMovie.uid = movieAPI.credentialsCurrentUser().uid;
-
 		return new Promise ((resolve, reject) => {
 			$.ajax({
 				method: 'PUT',
-				url:`${apiKeys.databaseURL}/items/${id}.json`,
+				url: `${apiKeys.databaseURL}/items/${editId}.json`,
 				data: JSON.stringify(editMovie)
 			}).done(() => {
 				resolve();
 			}).fail((error) => {
-				reject(error);
+				reject("add error: ", error);
 			});
 		});
 	};
