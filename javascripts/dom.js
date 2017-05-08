@@ -17,7 +17,6 @@ var movieAPI = ((showResults) => {
 			if (buttonId==="login" || buttonId==="save" || buttonId==="delete") {
 				movies = results;
 			}
-
 			let movieString = "";
 			for (let j=0; j< movies.length; j++){
 				movieString += `<div class="col-xs-6 col-md-4"><section>`;
@@ -67,7 +66,7 @@ var movieAPI = ((showResults) => {
 		resultString += `</section><button id="saveMovie" class="hidden">SAVE</button></div>`;
 		counter++;
 		if(counter === 3){
-			resultString += `<div class="clearfix visible-xs-block"></div>`
+			resultString += `<div class="clearfix visible-xs-block"></div>`;
 		}
 
 		$('#new-search-results').html(resultString);

@@ -46,15 +46,16 @@ $(document).ready(function() {
 				 		newMovie.ratings = 0;
 				 	}
 				 }
+				 console.log(newMovie.ratings);
 				if (id === "search"){				
-				movieAPI.addMovie(apiKeys, newMovie).then(() => {
-		        $('#search-new-container').addClass('hidden');
-		        $('#user-profile-container').removeClass('hidden');
-		        let id = "save";
-		        movieAPI.writeProfileDom(apiKeys, id);
-				}).catch((error) => {
-					console.log(error);
-				});
+					movieAPI.addMovie(apiKeys, newMovie).then(() => {
+				        $('#search-new-container').addClass('hidden');
+				        $('#user-profile-container').removeClass('hidden');
+				        let id = "save";
+				        movieAPI.writeProfileDom(apiKeys, id);
+					}).catch((error) => {
+						console.log(error);
+					});
 				} else if (id === "edit"){
 					movieAPI.editMovie(apiKeys, newMovie, editId).then(() => {
 						$('#search-new-container').addClass('hidden');
@@ -117,6 +118,7 @@ $(document).ready(function() {
 //**********************************************************
 	//BROAD MOVIE SEARCH
   $('#getMovie').click((event) => {
+  	$('#new-search-results').html("");
     let movieTitle = $('#movieSearch').val();
     movieAPI.getMovie(movieTitle).then((results) =>{
       let id = "search";
