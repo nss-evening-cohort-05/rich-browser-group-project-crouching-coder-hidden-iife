@@ -9,6 +9,78 @@ body {
 	input{
 		margin-top: 20px;
 		margin-bottom: 20px;
-		background-color: $yellow;
+		background-color: $white;
 	}
 }
+
+.background-image {
+  color: firebrick; 
+  background-image: url(travelstogether.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logo{
+	background-image: url(logo.png);
+	background-position: right 60px;
+	background-repeat: no-repeat;
+	background-color: $deepred;
+	color: gray;
+	margin-bottom: 20px;
+}
+
+#user-profile-container{
+	padding: 100px;
+	color: $charcoal;
+
+	#movieList{
+		margin: 0 auto;
+	}
+ section{
+	border: 2px solid black;
+	margin: 3px;
+	text-align: center;
+	max-width: 400px;
+	background-color: $white;
+	height: 250px;
+ }
+ #watched-btn{
+	margin-bottom: 20px;
+	background-color: $charcoal;
+	color: $white;
+ }
+  #unwatched-btn{
+	margin-bottom: 20px;
+	background-color: $charcoal;
+	color: $white;
+ }
+}
+.btn-primary{
+	background-color: $deepred;
+}
+
+#search-new-container{
+	color: $charcoal;
+	section{
+		border: 2px solid black;
+		margin: 3px;
+		text-align: center;
+		max-width: 400px;
+		background-color: $white;
+		height: 300px;
+	}
+	#getMovie{
+		background-color: $charcoal;
+		color: $white;
+	}
+}
+
+
+#search-yours-container{
+	color: $charcoal;
+	#get-my-movie{
+	color: $white;
+	background-color: $charcoal;
+	}
+}
+

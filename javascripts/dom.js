@@ -2,6 +2,7 @@ var movieAPI = ((showResults) => {
 	showResults.writeProfileDom = (keys, buttonId, movieName) => {
 		movieAPI.getUserMovieList(keys).then((results) => {
 			let movies = [];
+			let counter = 0;
 			for (var x=0; x<results.length; x++){
 				let movieNameResults = results[x].movieTitle.toLowerCase();
 				if (buttonId==="watched" && results[x].isSeen===true){
@@ -20,7 +21,7 @@ var movieAPI = ((showResults) => {
 
 			let movieString = "";
 			for (let j=0; j< movies.length; j++){
-				movieString += `<div class="col-xs-6 col-md-4"><section>`;
+				movieString += `<div class="col-xs-6 col-md-3"><section>`;
 				movieString += `<h2>${movies[j].movieTitle}</h2>`;
 				movieString += `<h3>${movies[j].yearReleased}</h3>`;
 				movieString += `<p>Actors: ${movies[j].actors}</p>`;
@@ -31,6 +32,10 @@ var movieAPI = ((showResults) => {
 				movieString += `</div>`;
 				movieString += `<button class="delete" id="${movies[j].id}">DELETE</button><button class="edit" id="${movies[j].id}">EDIT</button>`;
 				movieString += `</section></div>`;
+				counter++;
+				if(counter%3 === 0){
+				movieString += `<div class="clearfix visible-xs-block"></div>`;	
+				}
 			}
 			$("#movieList").html(movieString);
 		}).catch((error) => {
@@ -41,9 +46,9 @@ var movieAPI = ((showResults) => {
 	showResults.writeDom = (results, id) =>{
 		let searchResults = results;
 		let resultString = "";
-		let counter = 0;
 
-		resultString += `<div class="col-xs-6 col-md-4"><section>`;
+
+		resultString += `<div class="col-xs-6"><section>`;
 		resultString += `<h2>${searchResults.Title}</h2>`;
 		resultString += `<h3>${searchResults.Year}</h3>`;
 		resultString += `<p>Actors: ${searchResults.Actors}</p>`;
@@ -65,10 +70,7 @@ var movieAPI = ((showResults) => {
 		resultString += `<input class="radioButton" type="radio" name="rating" id="rating4" value="4">4`;
 		resultString += `<input class="radioButton" type="radio" name="rating" id="rating5" value="5">5</div>`;
 		resultString += `</section><button id="saveMovie" class="hidden">SAVE</button></div>`;
-		counter++;
-		if(counter === 3){
-			resultString += `<div class="clearfix visible-xs-block"></div>`
-		}
+
 
 		$('#new-search-results').html(resultString);
 	};

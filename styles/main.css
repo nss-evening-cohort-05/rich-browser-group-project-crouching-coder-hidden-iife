@@ -1,32 +1,64 @@
-.background-image {
-  color: firebrick; 
-  background-image: url(travelstogether.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.logo{
-	background-image: url(logo.png);
-	background-position: top right;
-	background-repeat: no-repeat;
-	background-color: firebrick;
-	color: gray;
-}
+body {
+  color: blue; }
 
 .input-holder input {
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: yellow; }
+  background-color: white; }
 
-section{
-	border: 2px solid black;
-	margin: 3px;
-	text-align: center;
-	max-width: 400px;
-}
+.background-image {
+  color: firebrick;
+  background-image: url(travelstogether.png);
+  background-repeat: no-repeat;
+  background-size: cover; }
 
-.btn-primary{
-	background-color: firebrick;
-}
+.logo {
+  background-image: url(logo.png);
+  background-position: right 60px;
+  background-repeat: no-repeat;
+  background-color: firebrick;
+  color: gray;
+  margin-bottom: 20px; }
 
-/*<div class="canva-embed" data-height-ratio="0.8" data-design-id="DACU4hHDeLk" style="padding:80% 5px 5px 5px;background:rgba(0,0,0,0.03);border-radius:8px;"></div><script async src="https://sdk.canva.com/v1/embed.js"></script><a href="https://www.canva.com/design/DACU4hHDeLk/view?utm_content=DACU4hHDeLk&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank">travelstogether</a> by <a href="https://www.canva.com/lady_l_24?utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank">Tasha N Simmons</a>*/
+#user-profile-container {
+  padding: 100px;
+  color: #36454F; }
+  #user-profile-container #movieList {
+    margin: 0 auto; }
+  #user-profile-container section {
+    border: 2px solid black;
+    margin: 3px;
+    text-align: center;
+    max-width: 400px;
+    background-color: white;
+    height: 250px; }
+  #user-profile-container #watched-btn {
+    margin-bottom: 20px;
+    background-color: #36454F;
+    color: white; }
+  #user-profile-container #unwatched-btn {
+    margin-bottom: 20px;
+    background-color: #36454F;
+    color: white; }
+
+.btn-primary {
+  background-color: firebrick; }
+
+#search-new-container {
+  color: #36454F; }
+  #search-new-container section {
+    border: 2px solid black;
+    margin: 3px;
+    text-align: center;
+    max-width: 400px;
+    background-color: white;
+    height: 300px; }
+  #search-new-container #getMovie {
+    background-color: #36454F;
+    color: white; }
+
+#search-yours-container {
+  color: #36454F; }
+  #search-yours-container #get-my-movie {
+    color: white;
+    background-color: #36454F; }
