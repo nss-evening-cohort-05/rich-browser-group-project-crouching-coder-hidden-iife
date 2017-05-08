@@ -16,7 +16,7 @@ var movieAPI = ((showResults) => {
 
 			let movieString = "";
 			for (let j=0; j< movies.length; j++){
-				movieString += `<div class="col-md-6"><section>`;
+				movieString += `<div class="col-xs-6 col-md-4"><section>`;
 				movieString += `<h2>${movies[j].movieTitle}</h2>`;
 				movieString += `<h3>${movies[j].yearReleased}</h3>`;
 				movieString += `<p>Actors: ${movies[j].actors}</p>`;
@@ -37,8 +37,9 @@ var movieAPI = ((showResults) => {
 	showResults.writeDom = (results, id) =>{
 		let searchResults = results;
 		let resultString = "";
+		let counter = 0;
 
-		resultString += `<div class="col-md-6"><section>`;
+		resultString += `<div class="col-xs-6 col-md-4"><section>`;
 		resultString += `<h2>${searchResults.Title}</h2>`;
 		resultString += `<h3>${searchResults.Year}</h3>`;
 		resultString += `<p>Actors: ${searchResults.Actors}</p>`;
@@ -60,6 +61,10 @@ var movieAPI = ((showResults) => {
 		resultString += `<input class="radioButton" type="radio" name="rating" id="rating4" value="4">4`;
 		resultString += `<input class="radioButton" type="radio" name="rating" id="rating5" value="5">5</div>`;
 		resultString += `</section><button id="saveMovie" class="hidden">SAVE</button></div>`;
+		counter++;
+		if(counter === 3){
+			resultString += `<div class="clearfix visible-xs-block"></div>`
+		}
 
 		$('#new-search-results').html(resultString);
 	};

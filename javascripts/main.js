@@ -137,6 +137,8 @@ $(document).ready(function() {
 //**********************************************************
   //LOGIN FUNCTIONALITY
   $("#userRegisterBtn").click(() => {
+  	$('body').removeClass("background-image");
+  	$('body').addClass("logo");
 		let email = $("#userEmail").val();
 		let password = $("#userPassword").val();
 		let username = $("#userName").val();
@@ -164,6 +166,8 @@ $(document).ready(function() {
 	});
 
   $("#userLoginBtn").click(() => {
+  	$('body').removeClass("background-image");
+  	$('body').addClass("logo");
 		let email = $("#userEmail").val();
 		let password = $("#userPassword").val();
 
