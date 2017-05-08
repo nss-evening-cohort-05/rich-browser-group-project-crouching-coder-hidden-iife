@@ -17,14 +17,34 @@ body {
   background-position: right 60px;
   background-repeat: no-repeat;
   background-color: firebrick;
-  color: gray; }
+  color: gray;
+  margin-bottom: 20px; }
 
-section {
-  border: 2px solid black;
-  margin: 3px;
-  text-align: center;
-  max-width: 400px;
-  background-color: #FAEBD7; }
+#user-profile-container {
+  padding: 100px; }
+  #user-profile-container #movieList {
+    margin: 0 auto; }
+  #user-profile-container section {
+    border: 2px solid black;
+    margin: 3px;
+    text-align: center;
+    max-width: 400px;
+    background-color: #FAEBD7;
+    height: 250px; }
+  #user-profile-container #watched-btn {
+    margin-bottom: 20px; }
+  #user-profile-container #unwatched-btn {
+    margin-bottom: 20px; }
 
 .btn-primary {
   background-color: firebrick; }
+
+#search-new-container {
+  padding: 150px; }
+  #search-new-container section {
+    border: 2px solid black;
+    margin: 3px;
+    text-align: center;
+    max-width: 400px;
+    background-color: #FAEBD7;
+    height: 300px; }
