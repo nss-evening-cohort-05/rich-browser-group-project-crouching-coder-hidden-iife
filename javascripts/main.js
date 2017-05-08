@@ -187,6 +187,7 @@ $(document).ready(function() {
 
   $("#new-movies").click(() => {
     $("#search-new-container").removeClass("hidden");
+	$("#movieSearch").focus();
     $("#user-profile-container").addClass("hidden");
     $("#search-yours-container").addClass("hidden");
 
@@ -195,6 +196,7 @@ $(document).ready(function() {
   $("#search-your-movies").click(() => {
     $("#user-profile-container").addClass("hidden");
     $("#search-yours-container").removeClass("hidden");
+	$("#my-movie-search").focus();
     $("#search-new-container").addClass("hidden");
 
   });
