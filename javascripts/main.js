@@ -202,6 +202,8 @@ $(document).ready(function() {
   });
 
   $("#logout").on("click", () => {
+  	$('body').addClass("background-image");
+  	$('body').removeClass("logo");
 		$("#login-container").removeClass("hidden");
 		$("#user-profile-container").addClass("hidden");
 		$("#search-yours-container").addClass("hidden");
