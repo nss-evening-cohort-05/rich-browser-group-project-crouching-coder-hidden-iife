@@ -10,7 +10,7 @@
   <!-- Personal Styles -->
 </head>
 
-<body>
+<body class="background-image">
 
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -35,20 +35,22 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-  <div id="login-container">
-    <h3>Login Container</h3>
-    <input type="email" placeholder="ENTER YOUR EMAIL" id="userEmail" name="">
-    <input type="password" placeholder="ENTER PASSWORD" id="userPassword" name="">
-    <input type="text" name="" placeholder="ENTER USERNAME" id="userName">
-    <input type="submit" name="" value="LOGIN" id="userLoginBtn">
-    <input type="submit" name="" value="REGISTER" id="userRegisterBtn">
+  <div class="container col-xs-4 col-xs-offset-4" id="login-container">
+    <h3>Login/Register</h3>
+    <input class="form-control form-spacing" type="email" placeholder="ENTER YOUR EMAIL" id="userEmail" name="">
+    <input class="form-control form-spacing" type="password" placeholder="ENTER PASSWORD" id="userPassword" name="">
+    <input class="form-control form-spacing" type="text" name="" placeholder="ENTER USERNAME" id="userName">
+    <input class="btn-success col-xs-6" type="submit" name="" value="LOGIN" id="userLoginBtn">
+    <input class="btn-primary col-xs-6" type="submit" name="" value="REGISTER" id="userRegisterBtn">
   </div>
 
   <div id="user-profile-container" class="hidden">
     <h3>user profile</h3>
     <button id="watched-btn" class="btn">Watched</button>
     <button id="unwatched-btn" class="btn">Unwatched</button>
-    <div id="movieList"></div>
+    <div class="container-fluid">
+      <div class="row" id="movieList"></div>
+    </div>
   </div>
 
   <div id="search-yours-container" class="hidden">
