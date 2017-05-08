@@ -38,7 +38,6 @@ $(document).ready(function() {
 				}
 			});
 			$("#saveMovie").on("click", (e) => {
-				console.log("save movie click", apiKeys);
 				let radioRatings = $("input:radio");
 				 for (let i =0; i < radioRatings.length; i++){
 				 	if (radioRatings[i].checked === true) {
@@ -47,18 +46,16 @@ $(document).ready(function() {
 				 		newMovie.ratings = 0;
 				 	}
 				 }
-				 console.log(id);
-				if (id==="search"){				
+				if (id === "search"){				
 				movieAPI.addMovie(apiKeys, newMovie).then(() => {
 		        $('#search-new-container').addClass('hidden');
 		        $('#user-profile-container').removeClass('hidden');
-		        console.log("working add movie?", newMovie);
 		        let id = "save";
 		        movieAPI.writeProfileDom(apiKeys, id);
 				}).catch((error) => {
 					console.log(error);
 				});
-				} else if (id==="edit"){
+				} else if (id === "edit"){
 					movieAPI.editMovie(apiKeys, newMovie, editId).then(() => {
 						$('#search-new-container').addClass('hidden');
 				        $('#user-profile-container').removeClass('hidden');
@@ -105,11 +102,9 @@ $(document).ready(function() {
 	$("#movieList").on("click", ".edit", (e) => {
 		editId = e.target.id;
 		let movieName = e.target.parentNode.firstChild.textContent;
-		console.log("edit click working", editId);
 		$("#search-new-container").removeClass("hidden");
 	    $("#user-profile-container").addClass("hidden");
 	    $("#search-yours-container").addClass("hidden");
-	    $('#movieSearch').val(editId);
 	    movieAPI.getMovie(movieName).then((results) => {
 	    	let id = "edit";
 	    	movieAPI.writeDom(results, id);
@@ -152,6 +147,9 @@ $(document).ready(function() {
 				movieAPI.loginUser(user).then((response) => {
 					$("#login-container").addClass("hidden");
 					$("#user-profile-container").removeClass("hidden");
+					$("#logout").removeClass("hidden");
+    				$("#new-movies").removeClass("hidden");
+    				$("#search-your-movies").removeClass("hidden");
 				}).catch((error) => {
 					console.log("login error: ", error);
 				});
@@ -197,6 +195,19 @@ $(document).ready(function() {
 
   });
 
+  $("#logout").on("click", () => {
+		$("#login-container").removeClass("hidden");
+		$("#user-profile-container").addClass("hidden");
+		$("#search-yours-container").addClass("hidden");
+		$("#search-new-container").addClass("hidden");
+		$("#new-movies").addClass("hidden");
+   		$("#search-your-movies").addClass("hidden");
+		movieAPI.logoutUser();
+		$("#userEmail").val("");
+		$("#userPassword").val("");
+		$("#userName").val("");
+	});
+
 //**********************************************************
 	//EVENT LISTENERS
   const clearInput = () => {
@@ -205,28 +216,15 @@ $(document).ready(function() {
   };
 
   $("#get-my-movie").click((e) => {
-    let myMovie = $("#my-movie-search").val();
+    let myMovie = $("#my-movie-search").val().toLowerCase();
     let id = e.target.id;
     clearInput();
-
-
-
-    // movieAPI.writeProfileDom(apiKeys, id, myMovie);
+    $("#search-yours-container").addClass("hidden");
+    $("#user-profile-container").removeClass("hidden");
+    movieAPI.writeProfileDom(apiKeys, id, myMovie);
   });
 
-  $("#watched-btn").click((e) => {
-    let id = e.target.id;
-
-
-    // movieAPI.writeProfileDom(apiKeys, id)
-  });
-
-  $("#unwatched-btn").click((e) => {
-    let id = e.target.id;
-
-    // movieAPI.writeProfileDom(apiKeys, id)
-  });
-
+  
 });
 
 

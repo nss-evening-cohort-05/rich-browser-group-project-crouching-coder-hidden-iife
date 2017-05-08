@@ -3,11 +3,15 @@ var movieAPI = ((showResults) => {
 		movieAPI.getUserMovieList(keys).then((results) => {
 			let movies = [];
 			for (var x=0; x<results.length; x++){
+				let movieNameResults = results[x].movieTitle.toLowerCase();
 				if (buttonId==="watched" && results[x].isSeen===true){
-						movies.push(results[x]);
+					movies.push(results[x]);
 				}
 				if (buttonId==="unwatched" && results[x].isSeen===false){
-						movies.push(results[x]);
+					movies.push(results[x]);
+				}
+				if (buttonId === "get-my-movie" && movieNameResults === movieName) {
+					movies.push(results[x]);
 				}
 			}
 			if (buttonId==="login" || buttonId==="save" || buttonId==="delete") {
