@@ -62,3 +62,6 @@ body {
   #search-yours-container #get-my-movie {
     color: white;
     background-color: #36454F; }
+
+#userLoginBtn {
+  background-color: #36454F; }
