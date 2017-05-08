@@ -42,8 +42,6 @@ $(document).ready(function() {
 				 for (let i =0; i < radioRatings.length; i++){
 				 	if (radioRatings[i].checked === true) {
 				 		newMovie.ratings = radioRatings[i].value;
-				 	} else {
-				 		newMovie.ratings = 0;
 				 	}
 				 }
 				if (id === "search"){				
@@ -56,6 +54,7 @@ $(document).ready(function() {
 					console.log(error);
 				});
 				} else if (id === "edit"){
+					console.log(newMovie);
 					movieAPI.editMovie(apiKeys, newMovie, editId).then(() => {
 						$('#search-new-container').addClass('hidden');
 				        $('#user-profile-container').removeClass('hidden');
@@ -172,6 +171,7 @@ $(document).ready(function() {
     $("#logout").removeClass("hidden");
     $("#new-movies").removeClass("hidden");
     $("#search-your-movies").removeClass("hidden");
+    $("#my-profile").removeClass("hidden");
 
 		let user = {email, password};
 		movieAPI.loginUser(user).then((response) => {
@@ -208,6 +208,7 @@ $(document).ready(function() {
 		$("#search-new-container").addClass("hidden");
 		$("#new-movies").addClass("hidden");
    		$("#search-your-movies").addClass("hidden");
+   		$("#my-profile").addClass("hidden");
 		movieAPI.logoutUser();
 		$("#userEmail").val("");
 		$("#userPassword").val("");
