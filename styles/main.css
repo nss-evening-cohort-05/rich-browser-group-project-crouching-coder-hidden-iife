@@ -4,7 +4,7 @@ body {
 .input-holder input {
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #FAEBD7; }
+  background-color: white; }
 
 .background-image {
   color: firebrick;
@@ -21,7 +21,8 @@ body {
   margin-bottom: 20px; }
 
 #user-profile-container {
-  padding: 100px; }
+  padding: 100px;
+  color: #36454F; }
   #user-profile-container #movieList {
     margin: 0 auto; }
   #user-profile-container section {
@@ -29,22 +30,35 @@ body {
     margin: 3px;
     text-align: center;
     max-width: 400px;
-    background-color: #FAEBD7;
+    background-color: white;
     height: 250px; }
   #user-profile-container #watched-btn {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    background-color: #36454F;
+    color: white; }
   #user-profile-container #unwatched-btn {
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    background-color: #36454F;
+    color: white; }
 
 .btn-primary {
   background-color: firebrick; }
 
 #search-new-container {
-  padding: 150px; }
+  color: #36454F; }
   #search-new-container section {
     border: 2px solid black;
     margin: 3px;
     text-align: center;
     max-width: 400px;
-    background-color: #FAEBD7;
+    background-color: white;
     height: 300px; }
+  #search-new-container #getMovie {
+    background-color: #36454F;
+    color: white; }
+
+#search-yours-container {
+  color: #36454F; }
+  #search-yours-container #get-my-movie {
+    color: white;
+    background-color: #36454F; }

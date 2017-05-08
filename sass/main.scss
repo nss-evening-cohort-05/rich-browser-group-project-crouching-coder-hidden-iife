@@ -9,7 +9,7 @@ body {
 	input{
 		margin-top: 20px;
 		margin-bottom: 20px;
-		background-color: $eggshell;
+		background-color: $white;
 	}
 }
 
@@ -31,6 +31,7 @@ body {
 
 #user-profile-container{
 	padding: 100px;
+	color: $charcoal;
 
 	#movieList{
 		margin: 0 auto;
@@ -40,14 +41,18 @@ body {
 	margin: 3px;
 	text-align: center;
 	max-width: 400px;
-	background-color: $eggshell;
+	background-color: $white;
 	height: 250px;
  }
  #watched-btn{
 	margin-bottom: 20px;
+	background-color: $charcoal;
+	color: $white;
  }
   #unwatched-btn{
 	margin-bottom: 20px;
+	background-color: $charcoal;
+	color: $white;
  }
 }
 .btn-primary{
@@ -55,13 +60,27 @@ body {
 }
 
 #search-new-container{
-	padding: 150px;
-section{
-	border: 2px solid black;
-	margin: 3px;
-	text-align: center;
-	max-width: 400px;
-	background-color: $eggshell;
-	height: 300px;
+	color: $charcoal;
+	section{
+		border: 2px solid black;
+		margin: 3px;
+		text-align: center;
+		max-width: 400px;
+		background-color: $white;
+		height: 300px;
+	}
+	#getMovie{
+		background-color: $charcoal;
+		color: $white;
 	}
 }
+
+
+#search-yours-container{
+	color: $charcoal;
+	#get-my-movie{
+	color: $white;
+	background-color: $charcoal;
+	}
+}
+
