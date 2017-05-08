@@ -67,7 +67,7 @@ var movieAPI = ((showResults) => {
 		resultString += `</section><button id="saveMovie" class="hidden">SAVE</button></div>`;
 		counter++;
 		if(counter === 3){
-			resultString += `<div class="clearfix visible-xs-block"></div>`
+			resultString += `<div class="clearfix visible-xs-block"></div>`;
 		}
 
 		$('#new-search-results').html(resultString);

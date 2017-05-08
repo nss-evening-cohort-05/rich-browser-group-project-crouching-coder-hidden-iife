@@ -9,6 +9,33 @@ body {
 	input{
 		margin-top: 20px;
 		margin-bottom: 20px;
-		background-color: $yellow;
+		background-color: $eggshell;
 	}
+}
+
+.background-image {
+  color: firebrick; 
+  background-image: url(travelstogether.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logo{
+	background-image: url(logo.png);
+	background-position: 75px right;
+	background-repeat: no-repeat;
+	background-color: $deepred;
+	color: gray;
+}
+
+section{
+	border: 2px solid black;
+	margin: 3px;
+	text-align: center;
+	max-width: 400px;
+	background-color: $eggshell;
+}
+
+.btn-primary{
+	background-color: $deepred;
 }
